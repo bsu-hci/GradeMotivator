@@ -103,9 +103,6 @@ class _GenerateGradeState extends State<GenerateGrade> {
             TextFormField(
               textAlign: TextAlign.right,
               decoration: const InputDecoration(hintText: "My Points"),
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly,
-              ],
               keyboardType: TextInputType.number,
               onSaved: (newValue) {
                 this._numberGradeInput = int.parse(newValue);
@@ -121,9 +118,6 @@ class _GenerateGradeState extends State<GenerateGrade> {
               textAlign: TextAlign.right,
               decoration:
                   const InputDecoration(hintText: "Total Possible Points"),
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly,
-              ],
               keyboardType: TextInputType.number,
               onSaved: (newNumber) {
                 this._totalPosibleInput = int.parse(newNumber);
