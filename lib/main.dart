@@ -111,7 +111,7 @@ class _GenerateGradeState extends State<GenerateGrade> {
               },
               validator: (value) {
                 if (value.isEmpty) {
-                  return "Must enter grade %";
+                  return "Must enter grade";
                 }
                 return null;
               },
