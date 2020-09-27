@@ -52,7 +52,7 @@ class GradeMotivator extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
             title: Text(
-                "Use this to calculate fraction based grades! (For %, enter 100 for the total points)")),
+                "Use this to calculate fraction based grades! (Whole numbers only for now) (For %, enter 100 for the total points)")),
         body: Center(
             child: Container(
           constraints: BoxConstraints(maxWidth: 350),
@@ -105,9 +105,6 @@ class _GenerateGradeState extends State<GenerateGrade> {
             TextFormField(
               textAlign: TextAlign.right,
               decoration: const InputDecoration(hintText: "My Points"),
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly,
-              ],
               keyboardType: TextInputType.number,
               onSaved: (newValue) {
                 this._numberGradeInput = int.parse(newValue);
@@ -123,9 +120,6 @@ class _GenerateGradeState extends State<GenerateGrade> {
               textAlign: TextAlign.right,
               decoration:
                   const InputDecoration(hintText: "Total Possible Points"),
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly,
-              ],
               keyboardType: TextInputType.number,
               onSaved: (newNumber) {
                 this._totalPosibleInput = int.parse(newNumber);
