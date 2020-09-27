@@ -3,6 +3,11 @@ import 'package:flutter/services.dart';
 
 void main() => runApp(GradeMotivator());
 
+class GenerateGrade extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _GenerateGradeState();
+}
+
 class Grade {
   int _userScore;
   int _totalPossiblePoints;
@@ -45,7 +50,9 @@ class GradeMotivator extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(
-        appBar: AppBar(title: Text("Motivation Starts Here")),
+        appBar: AppBar(
+            title: Text(
+                "Use this to calculate fraction based grades! (For %, enter 100 for the total points)")),
         body: Center(
             child: Container(
           constraints: BoxConstraints(maxWidth: 350),
@@ -55,11 +62,6 @@ class GradeMotivator extends StatelessWidget {
       ),
     );
   }
-}
-
-class GenerateGrade extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _GenerateGradeState();
 }
 
 class _GenerateGradeState extends State<GenerateGrade> {
@@ -103,6 +105,9 @@ class _GenerateGradeState extends State<GenerateGrade> {
             TextFormField(
               textAlign: TextAlign.right,
               decoration: const InputDecoration(hintText: "My Points"),
+              inputFormatters: <TextInputFormatter>[
+                FilteringTextInputFormatter.digitsOnly,
+              ],
               keyboardType: TextInputType.number,
               onSaved: (newValue) {
                 this._numberGradeInput = int.parse(newValue);
@@ -118,6 +123,9 @@ class _GenerateGradeState extends State<GenerateGrade> {
               textAlign: TextAlign.right,
               decoration:
                   const InputDecoration(hintText: "Total Possible Points"),
+              inputFormatters: <TextInputFormatter>[
+                FilteringTextInputFormatter.digitsOnly,
+              ],
               keyboardType: TextInputType.number,
               onSaved: (newNumber) {
                 this._totalPosibleInput = int.parse(newNumber);
