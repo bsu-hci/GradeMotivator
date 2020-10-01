@@ -95,12 +95,26 @@ class _GenerateGradeState extends State<GenerateGrade> {
     return "Invalid";
   }
 
+  String calculateGradeTriage(double score) {
+    if (score >= (17 / 18))
+      return "A : Great Job! Keep It up! Aim even higher next time!";
+    if (score <= (17 / 18))
+      return "B : Not Too Bad! One step below perfection! Keep going!";
+    if (score <= (5 / 6))
+      return "C : Still Passing, You can do better! Try asking for some extra help.";
+    if (score <= (2 / 3))
+      return "D : Maybe try making some notecards! Better study habits are a must.";
+    if (score <= (7 / 15))
+      return "F: Spend more time hittin' the books! You will get it next time.";
+    return "Invalid";
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
         key: _fk,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             TextFormField(
               textAlign: TextAlign.right,
