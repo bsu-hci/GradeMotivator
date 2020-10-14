@@ -51,6 +51,7 @@ class GradeMotivator extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(title: Text("Use this to calculate your grades!")),
+        backgroundColor: Colors.lightBlueAccent,
         body: Center(
             child: Container(
           constraints: BoxConstraints(maxWidth: 350),
@@ -126,11 +127,12 @@ class _GenerateGradeState extends State<GenerateGrade> {
 
   Widget _dropDown() {
     return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 50.0),
+        padding: const EdgeInsets.symmetric(vertical: 80.0),
         child: Column(
           children: [
-            Text("Choose Grading Scale:"),
+            Text("Choose a Grading Scale:"),
             DropdownButtonFormField(
+                dropdownColor: Colors.grey,
                 value: "Standard",
                 items: <String>["Standard", "Triage"]
                     .map<DropdownMenuItem<String>>((String value) {
@@ -146,11 +148,27 @@ class _GenerateGradeState extends State<GenerateGrade> {
         ));
   }
 
+  Widget _myPointMessage() {
+    return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 5.0),
+        child: Column(children: [
+          Text("Enter the points you got correct:"),
+        ]));
+  }
+
+  Widget _totalPointMessage() {
+    return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 5.0),
+        child: Column(children: [
+          Text("Enter the total points of the assignment:"),
+        ]));
+  }
+
   Widget _myScoreText() {
     return TextFormField(
-      textAlign: TextAlign.right,
+      textAlign: TextAlign.center,
       decoration: const InputDecoration(
-        hintText: "My points",
+        hintText: "*HERE*",
       ),
       keyboardType: TextInputType.number,
       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -166,8 +184,8 @@ class _GenerateGradeState extends State<GenerateGrade> {
 
   Widget _totalPossibleText() {
     return TextFormField(
-      textAlign: TextAlign.right,
-      decoration: const InputDecoration(hintText: "Total Possible Points"),
+      textAlign: TextAlign.center,
+      decoration: const InputDecoration(hintText: "*HERE*"),
       keyboardType: TextInputType.number,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (value) {
@@ -186,8 +204,9 @@ class _GenerateGradeState extends State<GenerateGrade> {
 
   Widget _calculateButton() {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5.0),
+      padding: const EdgeInsets.symmetric(vertical: 20.0),
       child: RaisedButton(
+        color: Colors.grey,
         onPressed: () {
           if (_fk.currentState.validate()) {
             _fk.currentState.save();
@@ -212,10 +231,11 @@ class _GenerateGradeState extends State<GenerateGrade> {
     return Form(
         key: _fk,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             _dropDown(),
+            _myPointMessage(),
             _myScoreText(),
+            _totalPointMessage(),
             _totalPossibleText(),
             _calculateButton(),
             _gradeMessage()
