@@ -171,7 +171,6 @@ class _GenerateGradeState extends State<GenerateGrade> {
         hintText: "*HERE*",
       ),
       keyboardType: TextInputType.number,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (value) {
         String _validation = _validate(value);
         if (_validation == null) {
@@ -187,7 +186,6 @@ class _GenerateGradeState extends State<GenerateGrade> {
       textAlign: TextAlign.center,
       decoration: const InputDecoration(hintText: "*HERE*"),
       keyboardType: TextInputType.number,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (value) {
         String _validation = _validate(value);
         if (_validation == null) {
