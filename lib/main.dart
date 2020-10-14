@@ -51,7 +51,7 @@ class GradeMotivator extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(title: Text("Use this to calculate your grades!")),
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: Colors.lightBlue[100],
         body: Center(
             child: Container(
           constraints: BoxConstraints(maxWidth: 350),
